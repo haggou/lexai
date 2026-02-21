@@ -1,0 +1,138 @@
+.notification-page-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    min-height: 80vh;
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notif-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+}
+
+.text-muted {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.mark-all-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.mark-all-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-color: #fff;
+}
+
+.notif-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notif-item {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.notif-item:hover {
+    background: #161616;
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.notif-item.unread {
+    background: linear-gradient(90deg, #111 0%, rgb(18, 18, 25) 100%);
+    border-left: 3px solid #3b82f6;
+}
+
+.unread-dot {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 8px;
+    height: 8px;
+    background: #3b82f6;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #3b82f6;
+}
+
+.notif-icon {
+    min-width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notif-content {
+    flex: 1;
+}
+
+.notif-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    align-items: baseline;
+}
+
+.notif-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #f1f5f9;
+}
+
+.notif-time {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.notif-msg {
+    color: #cbd5e1;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.notif-meta {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #475569;
+    font-family: monospace;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem;
+    color: #64748b;
+}

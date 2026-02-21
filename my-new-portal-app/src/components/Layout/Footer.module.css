@@ -1,0 +1,101 @@
+.footer {
+    background-color: #111827;
+    /* gray-900 */
+    color: #9ca3af;
+    /* gray-400 */
+    padding: 4rem 0 2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.logoIcon {
+    color: #6366f1;
+    /* indigo-500 */
+}
+
+.description {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+}
+
+.socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.socialLink {
+    color: #9ca3af;
+    font-size: 1.25rem;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.socialLink:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.heading {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.linkList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.linkList li {
+    margin-bottom: 0.75rem;
+}
+
+.linkList a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.linkList a:hover {
+    color: #6366f1;
+}
+
+.bottomBar {
+    border-top: 1px solid #374151;
+    /* gray-700 */
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+}

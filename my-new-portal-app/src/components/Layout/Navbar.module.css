@@ -1,0 +1,221 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    padding: 1.25rem 0;
+}
+
+.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    padding: 0.75rem 0;
+}
+
+.auth-nav .navbar {
+    background-color: transparent;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1f2937;
+    transition: transform 0.2s;
+}
+
+.logoIcon {
+    color: #4f46e5;
+}
+
+.scrolled .brand {
+    color: #111827;
+}
+
+.desktopMenu {
+    display: none;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .desktopMenu {
+        display: flex;
+    }
+}
+
+.navLink {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.navLink:hover {
+    color: #4f46e5;
+}
+
+.navLink.active {
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loginBtn {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.loginBtn:hover {
+    background-color: #4338ca;
+    transform: translateY(-1px);
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem;
+    background-color: #f3f4f6;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.userProfile:hover {
+    background-color: #e5e7eb;
+}
+
+.username {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.mobileToggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #374151;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .mobileToggle {
+        display: none;
+    }
+}
+
+.mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e5e7eb;
+}
+
+.mobileLink {
+    text-decoration: none;
+    color: #374151;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
+}
+
+.mobileLink:hover {
+    background-color: #f3f4f6;
+    color: #4f46e5;
+}
+
+.profileContainer {
+    position: relative;
+}
+
+.profileDropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 200px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 1001;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdownItem:hover {
+    background-color: #f3f4f6;
+    color: #4f46e5;
+}
+
+.dangerItem {
+    color: #ef4444;
+}
+
+.dangerItem:hover {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

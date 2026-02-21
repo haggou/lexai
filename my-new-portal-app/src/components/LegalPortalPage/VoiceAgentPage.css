@@ -1,0 +1,275 @@
+/* VoiceAgentPage.css */
+
+:root {
+    --orb-color-idle: #00d2ff;
+    --orb-color-listen: #00ff88;
+    --orb-color-think: #bf00ff;
+    --orb-color-speak: #ff0055;
+    --orb-color-disconnected: #555;
+    /* Grey for disconnected */
+    --bg-color: #050505;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-main: #ffffff;
+    --text-dim: #888888;
+}
+
+.voice-agent-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+    color: var(--text-main);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Background Grid/Particles */
+.voice-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Status Text */
+.status-indicator {
+    z-index: 10;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--orb-color-idle);
+    text-shadow: 0 0 10px currentColor;
+    transition: color 0.5s ease;
+}
+
+.status-indicator.listening {
+    color: var(--orb-color-listen);
+}
+
+.status-indicator.speaking {
+    color: var(--orb-color-speak);
+}
+
+.status-indicator.connecting {
+    color: #facc15;
+}
+
+/* Yellow */
+
+/* The Orb */
+.orb-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.orb {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(0, 210, 255, 0.4), rgba(0, 0, 0, 0.9));
+    box-shadow:
+        0 0 30px var(--orb-color-idle),
+        0 0 60px var(--orb-color-idle),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.orb.disconnected {
+    background: radial-gradient(circle at 30% 30%, rgba(200, 200, 200, 0.8), #444, #111);
+    box-shadow: 0 0 10px #555;
+    animation: none;
+    opacity: 0.7;
+}
+
+/* Orb Ripple Effect */
+.orb::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid var(--orb-color-idle);
+    opacity: 0;
+    z-index: -1;
+}
+
+/* Animations */
+@keyframes pulse-idle {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 30px var(--orb-color-idle);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 50px var(--orb-color-idle);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 30px var(--orb-color-idle);
+    }
+}
+
+@keyframes pulse-connecting {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 30px #facc15;
+    }
+
+    50% {
+        transform: scale(0.95);
+        box-shadow: 0 0 10px #facc15;
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 30px #facc15;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+    }
+
+    100% {
+        width: 250%;
+        height: 250%;
+        opacity: 0;
+    }
+}
+
+@keyframes speak-vibrate {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    75% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* State Modifiers */
+.orb.idle {
+    animation: pulse-idle 4s infinite ease-in-out;
+}
+
+.orb.connecting {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), #facc15, #000);
+    box-shadow: 0 0 30px #facc15;
+    animation: pulse-connecting 1s infinite ease-in-out;
+}
+
+.orb.listening {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), var(--orb-color-listen), black);
+    box-shadow: 0 0 40px var(--orb-color-listen), 0 0 80px var(--orb-color-listen);
+}
+
+.orb.listening::after {
+    animation: ripple 2s infinite linear;
+    border-color: var(--orb-color-listen);
+}
+
+.orb.speaking {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), var(--orb-color-speak), black);
+    box-shadow: 0 0 40px var(--orb-color-speak), 0 0 80px var(--orb-color-speak);
+    animation: speak-vibrate 0.3s infinite ease-in-out;
+}
+
+/* Transcript Area */
+.transcript-container {
+    z-index: 10;
+    margin-top: 2rem;
+    width: 80%;
+    max-width: 800px;
+    min-height: 80px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.ai-transcript {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Controls */
+.controls-container {
+    z-index: 10;
+    margin-top: 2rem;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: var(--glass-bg);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.control-btn.active {
+    background: var(--orb-color-listen);
+    box-shadow: 0 0 20px var(--orb-color-listen);
+    color: black;
+}

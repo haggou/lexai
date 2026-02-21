@@ -1,0 +1,27 @@
+
+> legal-ai-backend@1.0.0 test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --no-color
+
+(node:11580) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/chat.test.js
+  Chat API Automated Tests
+    √ POST /api/chat - Should return legal advice successfully (51 ms)
+    √ POST /api/chat - Should reject missing message (6 ms)
+
+  console.log
+    [dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+      at _log (node_modules/dotenv/lib/main.js:142:11)
+
+(node:9880) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/auth.test.js
+  Auth API Routes
+    √ POST /register should validate missing fields (35 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        1.245 s
+Ran all test suites.

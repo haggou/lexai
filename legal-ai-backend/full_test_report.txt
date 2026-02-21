@@ -1,0 +1,156 @@
+
+> legal-ai-backend@1.0.0 test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose --no-color
+
+  console.log
+    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+
+      at _log (node_modules/dotenv/lib/main.js:142:11)
+
+(node:16620) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL tests/wallet.test.js
+  Wallet API Tests
+    POST /create-order
+      √ should create an order successfully (31 ms)
+      × should fail with invalid amount (6 ms)
+    POST /verify-payment
+      × should verify payment successfully with valid signature (7 ms)
+      √ should reject payment with invalid signature (3 ms)
+    GET /balance/:userId
+      √ should return user balance (4 ms)
+      √ should return 404 for unknown user (3 ms)
+
+  ● Wallet API Tests › POST /create-order › should fail with invalid amount
+
+    expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 400
+    Received:    200
+
+      77 |                 });
+      78 |             // Assuming validation exists
+    > 79 |             expect(res.statusCode).toBeGreaterThanOrEqual(400);
+         |                                    ^
+      80 |         });
+      81 |     });
+      82 |
+
+      at Object.<anonymous> (tests/wallet.test.js:79:36)
+
+  ● Wallet API Tests › POST /verify-payment › should verify payment successfully with valid signature
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: undefined
+
+      105 |
+      106 |             expect(res.statusCode).toBe(200);
+    > 107 |             expect(res.body.success).toBe(true);
+          |                                      ^
+      108 |         });
+      109 |
+      110 |         it('should reject payment with invalid signature', async () => {
+
+      at Object.<anonymous> (tests/wallet.test.js:107:38)
+
+PASS tests/health.test.js
+  Health Check
+    √ should return 200 OK (8 ms)
+
+  console.log
+    [dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+      at _log (node_modules/dotenv/lib/main.js:142:11)
+
+FAIL tests/auth.test.js
+  Auth API - Industry Ready Tests
+    POST /api/auth/register
+      × should return 400 for validation errors (missing fields) (22 ms)
+      √ should return 400 if user already exists (7 ms)
+      × should return 201 on successful registration (6 ms)
+    POST /api/auth/login
+      × should return 401 for invalid credentials (4 ms)
+      √ should return 404/400 for non-existent user (3 ms)
+      × should return 200 and token for valid credentials (3 ms)
+
+  ● Auth API - Industry Ready Tests › POST /api/auth/register › should return 400 for validation errors (missing fields)
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      85 |                 });
+      86 |             expect(res.statusCode).toEqual(400);
+    > 87 |             expect(res.body.errors).toBeDefined();
+         |                                     ^
+      88 |         });
+      89 |
+      90 |         it('should return 400 if user already exists', async () => {
+
+      at Object.<anonymous> (tests/auth.test.js:87:37)
+
+  ● Auth API - Industry Ready Tests › POST /api/auth/register › should return 201 on successful registration
+
+    expect(received).toHaveProperty(path)
+
+    Expected path: "token"
+    Received path: []
+
+    Received value: {"message": "User registered successfully."}
+
+      118 |                 });
+      119 |             expect(res.statusCode).toEqual(201);
+    > 120 |             expect(res.body).toHaveProperty('token');
+          |                              ^
+      121 |         });
+      122 |     });
+      123 |
+
+      at Object.<anonymous> (tests/auth.test.js:120:30)
+
+  ● Auth API - Industry Ready Tests › POST /api/auth/login › should return 401 for invalid credentials
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 404
+
+      130 |                     password: 'wrongpassword'
+      131 |                 });
+    > 132 |             expect(res.statusCode).toBe(401);
+          |                                    ^
+      133 |         });
+      134 |
+      135 |         it('should return 404/400 for non-existent user', async () => {
+
+      at Object.<anonymous> (tests/auth.test.js:132:36)
+
+  ● Auth API - Industry Ready Tests › POST /api/auth/login › should return 200 and token for valid credentials
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: 200
+    Received: 404
+
+      150 |                     password: 'password123'
+      151 |                 });
+    > 152 |             expect(res.statusCode).toEqual(200);
+          |                                    ^
+      153 |             expect(res.body).toHaveProperty('token');
+      154 |             expect(res.body.token).toBe('mock_jwt_token');
+      155 |         });
+
+      at Object.<anonymous> (tests/auth.test.js:152:36)
+
+PASS tests/chat.test.js
+  Chat API Automated Tests
+    √ POST /api/chat - Should return legal advice successfully (24 ms)
+    √ POST /api/chat - Should reject missing message (9 ms)
+
+Test Suites: 2 failed, 2 passed, 4 total
+Tests:       6 failed, 9 passed, 15 total
+Snapshots:   0 total
+Time:        1.165 s
+Ran all test suites.

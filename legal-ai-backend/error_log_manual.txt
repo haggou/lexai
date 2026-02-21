@@ -1,0 +1,7 @@
+Error: LexAI Service Unavailable. Please try again later. Original Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent: [404 Not Found] models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+Stack: Error: LexAI Service Unavailable. Please try again later. Original Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent: [404 Not Found] models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+    at generateLexAI (file:///D:/nodeprojects/lexai/legal-ai-backend/services/aiService.js:272:15)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async generateLegalResponse (file:///D:/nodeprojects/lexai/legal-ai-backend/services/aiService.js:401:16)
+    at async testUpload (file:///D:/nodeprojects/lexai/legal-ai-backend/scripts/test_upload_manual.js:34:26)
+Details: {}

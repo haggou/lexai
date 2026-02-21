@@ -1,0 +1,347 @@
+/* HomePage.css - Mobile First Refactor */
+
+/* Existing Styles & Mobile Defaults */
+.home-container {
+    min-height: 100vh;
+    background: #0f172a;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.hero-section {
+    position: relative;
+    padding: 4rem 1.5rem 2rem;
+    /* Compact padding for mobile */
+    display: flex;
+    flex-direction: column;
+    /* Stacked on mobile */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Center text on mobile */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.hero-content {
+    max-width: 100%;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 2.5rem;
+    /* Smaller for mobile */
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    padding: 0 1rem;
+}
+
+/* CTA Buttons */
+.cta-group {
+    display: flex;
+    flex-direction: column;
+    /* Stack buttons on mobile */
+    gap: 1rem;
+    align-items: stretch;
+    /* Full width buttons */
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.primary-cta,
+.secondary-cta {
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+}
+
+.primary-cta {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.secondary-cta {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.primary-cta:hover,
+.secondary-cta:hover {
+    transform: translateY(-2px);
+}
+
+.primary-cta:hover {
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+.secondary-cta:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Visuals - Default Hidden or Simplified */
+.hero-visuals {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: none;
+    /* Hide complex visuals on mobile by default to save space */
+}
+
+.floating-card {
+    position: absolute;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: float 6s ease-in-out infinite;
+}
+
+.c1 {
+    top: 20%;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.c2 {
+    bottom: 20%;
+    right: 0;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.glow-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    z-index: -1;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+}
+
+.feature-card {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.feature-card:hover {
+    background: #25334d;
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.blue {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+.green {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+.purple {
+    background: rgba(139, 92, 246, 0.2);
+    color: #a78bfa;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* News Ticker - Mobile */
+.news-ticker-section {
+    background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.ticker-label {
+    background: #ef4444;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.ticker-content {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #cbd5e1;
+    font-size: 0.85rem;
+}
+
+.ticker-content span {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.news-arrow {
+    display: none;
+}
+
+/* Hide arrow on mobile */
+
+/* --- DESKTOP UPGRADES --- */
+@media (min-width: 1024px) {
+    .hero-section {
+        padding: 6rem 2rem 4rem;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .cta-group {
+        flex-direction: row;
+        align-items: center;
+        max-width: none;
+        margin: 0;
+    }
+
+    .hero-visuals {
+        display: block;
+        width: 400px;
+        height: 400px;
+    }
+
+    .glow-orb {
+        width: 300px;
+        height: 300px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .news-ticker-section {
+        padding: 10px 20px;
+        gap: 20px;
+    }
+
+    .ticker-label {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+
+    .ticker-content {
+        font-size: 0.9rem;
+    }
+
+    .news-arrow {
+        display: block;
+        color: #64748b;
+    }
+
+    .news-ticker-section:hover .news-arrow {
+        color: #ef4444;
+    }
+}
