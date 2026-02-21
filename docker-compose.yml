@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./legal-ai-backend
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      # Secrets should be handled via .env or Jenkins credentials
+    env_file:
+      - .env.production
+    networks:
+      - app-network
+    restart: always
+
+  frontend-build:
+    build:
+      context: ./my-new-portal-app
+      dockerfile: Dockerfile
+    volumes:
+      - build-share:/app/build
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - build-share:/usr/share/nginx/html:ro
+      - certs:/etc/letsencrypt
+      - certs-data:/data/letsencrypt
+    depends_on:
+      - backend
+      - frontend-build
+    networks:
+      - app-network
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  build-share:
+  certs:
+  certs-data:

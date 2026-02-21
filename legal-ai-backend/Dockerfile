@@ -1,17 +1,21 @@
+# Production Dockerfile for Node.js Backend
 FROM node:18-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
+# Install dependencies (use cache)
 COPY package*.json ./
 RUN npm ci --only=production
 
-# Bundle app source
+# Copy source code
 COPY . .
 
-# Expose port
-EXPOSE 3000
+# Security: Run as non-privileged user
+USER node
 
-# Start command
+# Expose port
+EXPOSE 5000
+
+# Start application
 CMD [ "node", "server.js" ]
